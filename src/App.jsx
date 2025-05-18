@@ -1,20 +1,12 @@
-import React from "react";
-import TestEmotionType from "./components/EmotionType/EmotionType";
 
-const App = () => {
-  return (
-    <div>
-      <TestEmotionType />
-    </div>
-  );
-};
+import './App.css'
+import Home from "../src/pages/Home/Home";
 
-export default App;
 
-// import React from "react";
+function App() {
+  
+  return <Home />;
+  
+}
 
-// const App = () => {
-//   return <h1>Hello, MindHue!</h1>;
-// };
-
-// export default App;
+export default App
