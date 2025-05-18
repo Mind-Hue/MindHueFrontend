@@ -27,13 +27,7 @@ body {
   margin: 4px 0;
 }
 
-/* FOOTER */
-.footer {
-  background: #000;
-  color: white;
-  text-align: center;
-  padding: 2rem;
-}
+
 .image-placeholder.small {
   height: 64px;
   width: 64px;

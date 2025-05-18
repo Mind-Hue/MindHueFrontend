@@ -1,45 +1,65 @@
-.card {
-    background-color: #3b3b3b;
+.emotion-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #332701;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.emotion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+h2 {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px;
+  text-align: left;
+  flex: 1;
+}
+
+.emotion-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  p {
+    font-size: 14px;
     color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    margin: 20px;
-    border: 3px solid transparent;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    margin-bottom: 20px;
+    text-align: left;
   }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .emoji {
-    width: 50px;
-    height: 50px;
-  }
-  
+
   .image-container {
     display: flex;
     justify-content: space-between;
   }
-  
-  .image-box {
-    width: 45%;
-    height: 100px;
-    background-color: #555;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-  }
-  
+
   .button-group {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
   }
-  
+
+  .image-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin-right: 10px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 10px;
+    }
+  }
+}

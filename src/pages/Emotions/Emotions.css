@@ -1,23 +1,14 @@
-.emotions-content {
-  padding: 40px 20px;
-  text-align: center;
+.emotions-container {
+  padding: 20px;
 }
 
-.emotions-content h1 {
-  margin-bottom: 10px;
-  font-size: 2.5rem;
-}
 
-.emotions-content p {
-  max-width: 600px;
-  margin: 0 auto 30px;
-  color: #444;
-  font-size: 1.1rem;
-}
-
-.emotion-container {
+.emotions-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   gap: 20px;
+  border-radius: 20px;
 }
+
+
