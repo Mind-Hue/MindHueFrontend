@@ -1,15 +1,13 @@
 import React from "react";
 import Button from "../Buttons/Buttons";
 import "./EmotionCard.css";
-import EmotionsIcon from "../../assets/emotionsIcons/joy_icon.png";
-import ImagenBox from "../../assets/Image.png"
 
-const EmotionCard = ({ title, description, color }) => {
+const EmotionCard = ({ title, description, color, icon }) => {
   return (
-    <div className="emotion-card">
+    <div className="emotion-card" style={{ borderColor: color }}>
       <div className="emotion-header">
         <h2>{title}</h2>
-        <img src={EmotionsIcon} alt={`${title} icon`} />
+        <img src={icon} alt={`${title} icon`} className="emotion-icon" />
       </div>
 
       <div className="emotion-body">
