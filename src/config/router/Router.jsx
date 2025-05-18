@@ -10,7 +10,7 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/emotions" element={<Emotions />} />
         <Route path="/emotionType" element={<Emotions />} />,
         <Route path="/exercises" element={<Exercises />} />
