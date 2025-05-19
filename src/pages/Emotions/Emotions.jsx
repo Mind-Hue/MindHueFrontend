@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import EmotionCard from "../../components/EmotionCard/EmotionCard";
@@ -11,6 +12,11 @@ import "./Emotions.css";
 
 const EmotionsPage = () => {
   const [emotions, setEmotions] = useState([]);
+  const navigate = useNavigate();
+
+  const handleChooseEmotion = (emotionTypeId) => {
+    navigate(`/exercises?emotionTypeId=${emotionTypeId}`);
+  };
 
   // Mapa de íconos para asignarlos manualmente según el nombre de la emoción
   const iconMap = {
@@ -21,24 +27,18 @@ const EmotionsPage = () => {
     Calm: calmIcon,
   };
 
-  const colorMap = {
-    Joy: "#FFC107", // Amarillo
-    Sadness: "#0A58CA", // Azul
-    Anger: "#DC3545", // Rojo
-    Fear: "#1AA179", // Verde
-    Calm: "#0AA2C0", // Azul claro
-  };
-
   useEffect(() => {
-    // Realiza una solicitud GET al backend
-    fetch("http://localhost:8080/api/v1/emotion-types") // Cambia la URL según tu backend
+    fetch("http://localhost:8080/api/v1/emotion-types")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch emotions");
         }
         return response.json();
       })
-      .then((data) => setEmotions(data))
+      .then((data) => {
+        console.log("Fetched emotions:", data); // Verifica los datos aquí
+        setEmotions(data);
+      })
       .catch((error) => console.error("Error fetching emotions:", error));
   }, []);
 
@@ -51,14 +51,15 @@ const EmotionsPage = () => {
         <p>Explore and understand your emotions effectively.</p>
 
         <div className="emotions-list">
-          {emotions.map((emotion, index) => (
-            <EmotionCard
-              key={index}
-              title={emotion.name}
-              colorHex={colorMap[emotion.name]} // Asigna el color desde el mapa
-              description={`This is the ${emotion.name} emotion.`}
-              icon={iconMap[emotion.name]}
-            />
+          {emotions.map((emotion) => (
+           <EmotionCard
+           key={emotion.id}
+           title={emotion.name}
+           color={emotion.colorHex}
+           description={`This is the ${emotion.name} emotion.`}
+           icon={iconMap[emotion.name]} // Asigna el ícono basado en el nombre
+           onChoose={() => handleChooseEmotion(emotion.id)} // Pasa la función para manejar el botón
+         />
           ))}
         </div>
       </main>

@@ -2,11 +2,10 @@ import React from "react";
 import Button from "../Buttons/Buttons";
 import "./EmotionCard.css";
 
-const EmotionCard = ({ title, colorHex, description, icon }) => {
-  console.log("EmotionCard colorHex:", colorHex); // Depuración para verificar el color
-
+const EmotionCard = ({ title, color, description, icon, onChoose }) => {
+  console.log("EmotionCard color:", color);
   return (
-    <div className="emotion-card" style={{ borderColor: colorHex }}>
+    <div className="emotion-card" style={{ borderColor: color }}>
       <div className="emotion-header">
         <h2>{title}</h2>
         {icon && <img src={icon} alt={`${title} icon`} className="emotion-icon" />}
@@ -22,12 +21,8 @@ const EmotionCard = ({ title, colorHex, description, icon }) => {
 
         <div className="button-group">
           <Button
-            text="View details"
-            onClick={() => alert(`Details of ${title}`)}
-          />
-          <Button
             text="Choose emotion"
-            onClick={() => alert(`You chose ${title}`)}
+            onClick={onChoose} // Llama a la función pasada como prop
           />
         </div>
       </div>

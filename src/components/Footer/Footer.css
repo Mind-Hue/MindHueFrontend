@@ -12,8 +12,8 @@
   overflow: hidden;
 
   .logo {
-    height: 60px; /* Ajusta el tamaño del logo */
-    margin-right: auto; /* Empuja el logo hacia la izquierda */
+    height: 60px;
+    margin-right: auto;
   }
 
   .icon {

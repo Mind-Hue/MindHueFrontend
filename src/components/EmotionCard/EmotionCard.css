@@ -7,6 +7,11 @@
   padding: 20px;
   border-radius: 20px;
   border: 4px solid transparent; /* El color del borde será dinámico desde React */
+  transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Transición suave para el borde */
+}
+
+.emotion-card:hover {
+  transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
 }
 
 .emotion-header {
