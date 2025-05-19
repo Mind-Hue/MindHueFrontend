@@ -1,0 +1,52 @@
+.exercise-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #EEEBEB;
+    justify-content: flex-start;
+    padding: 20px;
+    /* max-width: 400px; */
+    margin: auto;
+    text-align: center;
+
+
+    .exercise-content {
+        display: flex; /* Coloca los elementos en fila */
+        justify-content: space-between; /* Espacio entre los elementos */
+        align-items: center; /* Alineación vertical */
+        gap: 20px; /* Espaciado entre los elementos */
+        margin-top: 20px;
+    }
+
+.exercise-img {
+    width: 50%; /* Ocupa la mitad del ancho del contenedor */
+    height: 200px;
+    background-color: #d8d8d8;
+    border-radius: 4px;
+}
+
+.data-exercise {
+    width: 50%; /* Ocupa la mitad del ancho del contenedor */
+    text-align: left;
+}
+
+
+ 
+.instructions-box {
+    background-color: #332701;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: left;
+  
+    /* Evitar que el texto se salga del contenedor */
+    word-wrap: break-word; /* Rompe las palabras largas */
+    overflow: hidden; /* Oculta el contenido que exceda el contenedor */
+    text-overflow: ellipsis; /* Agrega "..." si el texto es demasiado largo */
+    max-width: 100%; /* Asegura que el ancho máximo sea el del contenedor */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+
+}
+
+

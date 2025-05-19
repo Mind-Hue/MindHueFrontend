@@ -1,7 +1,19 @@
-import React from "react";
+import React from 'react';
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer"; 
+import ExerciseData from '../../components/ExerciseData/ExerciseData';
+import './Exercises.css';
+
 
 function Exercises() {
-  return <h1>Test Exercise Page</h1>;
+  return (
+    <div>
+      <Header />
+      <div className="exercises-data">
+          <ExerciseData />
+      </div>
+      <Footer />
+      </div>
+  );
 }
-
 export default Exercises;
