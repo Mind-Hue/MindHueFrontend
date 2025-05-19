@@ -8,9 +8,9 @@ import Timer from "../../components/Timer/Timer";
 
 function Exercises() {
   const [exercises, setExercises, emotions, setEmotions] = useState([]);
+  const [emotionType, setEmotionType] = useState([]);
   const [searchParams] = useSearchParams();
   const emotionTypeId = searchParams.get("emotionTypeId"); // Obtén emotionTypeId desde los parámetros de búsqueda
- 
 
   useEffect(() => {
     if (!emotionTypeId || isNaN(emotionTypeId)) {
@@ -34,6 +34,19 @@ function Exercises() {
         setExercises(data);
       })
       .catch((error) => console.error("Error fetching exercises:", error));
+
+    fetch(`http://localhost:8080/api/v1/emotion-types/${emotionTypeId}`)
+      .then((response) => {
+        if (!response.ok) {
+          console.error(`Error: ${response.status} ${response.statusText}`);
+          throw new Error("Failed to fetch emotion type");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Fetched emotion type:", data);
+        setEmotionType(data);
+      });
   }, [emotionTypeId]);
 
   return (
@@ -49,8 +62,7 @@ function Exercises() {
               materials={exercise.materials}
               estimatedTime={exercise.estimatedTime}
               instructions={exercise.instructions}
-              color={exercise.colorHex} // Pasa el color dinámico o un color predeterminado
-            
+              color={emotionType.body.colorHex} // Pasa el color dinámico o un color predeterminado
             />
           ))
         ) : (
