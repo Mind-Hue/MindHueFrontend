@@ -8,15 +8,17 @@ const EmotionalRegistry = ({ exercise, emotionType, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Construir el payload para enviar al backend
     const payload = {
-      emotionTypeId: emotionType.id,
-      exerciseId: exercise.id,
-      userName,
-      createdAt,
+      emotionTypeId: emotionType.id, // ID del tipo de emoción
+      exerciseId: exercise.id, // ID del ejercicio
+      userName, // Nombre del usuario
+      createdAt, // Fecha y hora seleccionada
     };
 
     console.log("Submitting payload:", payload);
 
+    // Enviar los datos al backend mediante un POST
     fetch("http://localhost:8080/api/v1/emotion-logs", {
       method: "POST",
       headers: {
@@ -32,12 +34,14 @@ const EmotionalRegistry = ({ exercise, emotionType, onClose }) => {
       })
       .then((data) => {
         console.log("Emotion log submitted:", data);
+        alert("Emotion log successfully submitted!"); // Notificación de éxito
         onClose(); // Cierra el popup después de enviar los datos
       })
-      .catch((error) => console.error("Error submitting emotion log:", error));
+      .catch((error) => {
+        console.error("Error submitting emotion log:", error);
+        alert("Failed to submit emotion log. Please try again."); // Notificación de error
+      });
   };
-
-  console.log("Emotion Type:", emotionType);
 
   return (
     <div className="emotional-registry">
@@ -45,7 +49,9 @@ const EmotionalRegistry = ({ exercise, emotionType, onClose }) => {
       <p className="subtitle">
         Log your emotions for the exercise: <strong>{exercise?.name}</strong>
       </p>
-
+      <p className="subtitle">
+        Emotion Type: <strong>{emotionType?.name}</strong>
+      </p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="userName">User Name</label>
@@ -69,7 +75,7 @@ const EmotionalRegistry = ({ exercise, emotionType, onClose }) => {
           />
         </div>
         <button type="submit" className="submit-btn">
-          Submit
+          Start
         </button>
       </form>
     </div>

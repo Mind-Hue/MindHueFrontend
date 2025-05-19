@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import ExerciseData from "../../components/ExerciseData/ExerciseData";
 import "./Exercises.css";
 import Timer from "../../components/Timer/Timer";
-import EmotionalRegistry from "../../components/EmotionalRegistry/EmotionalRegistry";  
+import EmotionalRegistry from "../../components/EmotionalRegistry/EmotionalRegistry";
 
 function Exercises() {
   const [exercises, setExercises] = useState([]);
@@ -35,9 +35,8 @@ function Exercises() {
       .then((data) => {
         console.log("Fetched exercises:", data);
         setExercises(data);
-              })
+      })
       .catch((error) => console.error("Error fetching exercises:", error));
-
 
     fetch(`http://localhost:8080/api/v1/emotion-types/${emotionTypeId}`)
       .then((response) => {
@@ -49,10 +48,9 @@ function Exercises() {
       })
       .then((data) => {
         console.log("Fetched emotion type:", data);
-        setEmotionType(data);
+        setEmotionType(data); // Guarda el emotionType en el estado
       });
   }, [emotionTypeId]);
-
 
   const handleChooseExercise = (exercise) => {
     console.log("Exercise selected:", exercise);
@@ -65,8 +63,6 @@ function Exercises() {
     setShowPopup(false); // Oculta el popup
     setSelectedExercise(null); // Limpia el ejercicio seleccionado
   };
-
-
 
   return (
     <div>
@@ -93,20 +89,21 @@ function Exercises() {
       </div>
 
       {/* Popup */}
-      {(showPopup && (
-  <div className="popup-overlay">
-    <div className="popup-content">
-      <button className="close-button" onClick={closePopup}>
-        &times;
-      </button>
-      <EmotionalRegistry 
-        exercise={selectedExercise}
-        emotionTypeId={emotionType}
-        onClose={closePopup}
-      />
-    </div>
-  </div>
-))}
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <button className="close-button" onClick={closePopup}>
+              &times;
+            </button>
+            <EmotionalRegistry
+              exercise={selectedExercise}
+              emotionType={emotionType}
+              // emotionType={emotionType} // Pasa el objeto completo emotionType
+              onClose={closePopup}
+            />
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
