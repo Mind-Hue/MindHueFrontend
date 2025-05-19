@@ -9,6 +9,10 @@ const App = () => {
     console.log("Use effect!!!!!!");
     emotionTypeService.getAllEmotionTypes().then((res) => {
       setEmotionTypes(res);
+      if (!emotionTypeId || isNaN(emotionTypeId)) {
+        console.error("Invalid Emotion Type ID:", emotionTypeId);
+        return;
+      }
     });
   }, []);
 
