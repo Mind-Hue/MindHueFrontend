@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import EmotionCard from "../../components/EmotionCard/EmotionCard";
@@ -11,6 +12,10 @@ import "./Emotions.css";
 
 const EmotionsPage = () => {
   const [emotions, setEmotions] = useState([]);
+
+  const handleChooseEmotion = (emotionTypeId) => {
+    navigate(`/exercises?emotionTypeId=${emotionTypeId}`);
+  };
 
   // Mapa de íconos para asignarlos manualmente según el nombre de la emoción
   const iconMap = {
