@@ -2,12 +2,14 @@ import React from "react";
 import Button from "../Buttons/Buttons";
 import "./EmotionCard.css";
 
-const EmotionCard = ({ title, description, color, icon }) => {
+const EmotionCard = ({ title, colorHex, description, icon }) => {
+  console.log("EmotionCard colorHex:", colorHex); // Depuración para verificar el color
+
   return (
-    <div className="emotion-card" style={{ borderColor: color }}>
+    <div className="emotion-card" style={{ borderColor: colorHex }}>
       <div className="emotion-header">
         <h2>{title}</h2>
-        <img src={icon} alt={`${title} icon`} className="emotion-icon" />
+        {icon && <img src={icon} alt={`${title} icon`} className="emotion-icon" />}
       </div>
 
       <div className="emotion-body">
