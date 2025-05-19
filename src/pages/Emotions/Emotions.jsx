@@ -12,6 +12,7 @@ import "./Emotions.css";
 
 const EmotionsPage = () => {
   const [emotions, setEmotions] = useState([]);
+  const navigate = useNavigate();
 
   const handleChooseEmotion = (emotionTypeId) => {
     navigate(`/exercises?emotionTypeId=${emotionTypeId}`);
@@ -51,13 +52,14 @@ const EmotionsPage = () => {
 
         <div className="emotions-list">
           {emotions.map((emotion) => (
-            <EmotionCard
-              key={emotion.id}
-              title={emotion.name}
-              color={emotion.colorHex} // Pasa el color dinámico
-              description={`This is the ${emotion.name} emotion.`}
-              icon={iconMap[emotion.name]} // Asigna el ícono basado en el nombre
-            />
+           <EmotionCard
+           key={emotion.id}
+           title={emotion.name}
+           color={emotion.colorHex}
+           description={`This is the ${emotion.name} emotion.`}
+           icon={iconMap[emotion.name]} // Asigna el ícono basado en el nombre
+           onChoose={() => handleChooseEmotion(emotion.id)} // Pasa la función para manejar el botón
+         />
           ))}
         </div>
       </main>

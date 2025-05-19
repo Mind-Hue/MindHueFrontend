@@ -5,9 +5,11 @@
   background-color: #eeebeb;
   justify-content: flex-start;
   padding: 20px;
-  /* max-width: 400px; */
+  max-width: 400px;
   margin: auto;
   text-align: center;
+  border: 4px solid transparent; /* El color del borde será dinámico desde React */
+  transition: border-color 0.2s ease-in-out; /* Transición suave para el borde */
 
   .exercise-content {
     display: flex; /* Coloca los elementos en fila */
@@ -15,6 +17,7 @@
     align-items: center; /* Alineación vertical */
     gap: 20px; /* Espaciado entre los elementos */
     margin-top: 20px;
+    overflow: hidden;
   }
 
   .exercise-img {
@@ -22,6 +25,7 @@
     height: 200px;
     background-color: #d8d8d8;
     border-radius: 4px;
+    object-fit: cover;  /* Mantiene la proporción de la imagen */
   }
 
   .data-exercise {
@@ -33,10 +37,12 @@
     background-color: #332701;
     color: white;
     padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-    text-align: left;
-
+    border-radius: 10px;
+    border: 4px solid transparent; /* El color del borde será dinámico desde React */
+    transition: border-color 0.2s ease-in-out; /* Transición suave para el borde */
+      text-align: left;
+  }
+  
     /* Evitar que el texto se salga del contenedor */
     word-wrap: break-word; /* Rompe las palabras largas */
     overflow: hidden; /* Oculta el contenido que exceda el contenedor */
@@ -53,9 +59,9 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
+    
     .choose-button:hover {
       background-color: #0056b3;
     }
   }
-}
+

@@ -7,9 +7,10 @@ import "./Exercises.css";
 import Timer from "../../components/Timer/Timer";
 
 function Exercises() {
-  const [exercises, setExercises] = useState([]);
+  const [exercises, setExercises, emotions, setEmotions] = useState([]);
   const [searchParams] = useSearchParams();
   const emotionTypeId = searchParams.get("emotionTypeId"); // Obtén emotionTypeId desde los parámetros de búsqueda
+ 
 
   useEffect(() => {
     if (!emotionTypeId || isNaN(emotionTypeId)) {
@@ -48,6 +49,8 @@ function Exercises() {
               materials={exercise.materials}
               estimatedTime={exercise.estimatedTime}
               instructions={exercise.instructions}
+              color={exercise.colorHex} // Pasa el color dinámico o un color predeterminado
+            
             />
           ))
         ) : (

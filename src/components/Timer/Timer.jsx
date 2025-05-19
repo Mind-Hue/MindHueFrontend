@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './Timer.css';
+import React, { useEffect, useRef, useState } from "react";
+import "./Timer.css";
 
-const Timer = ({ duration = 60, onExit }) => {
+const Timer = ({ duration = 60 * 15, onExit }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
   const [isRunning, setIsRunning] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
@@ -46,12 +46,7 @@ const Timer = ({ duration = 60, onExit }) => {
   return (
     <div className="timer-container">
       <svg width="160" height="160">
-        <circle
-          className="timer-bg"
-          cx="80"
-          cy="80"
-          r={radius}
-        />
+        <circle className="timer-bg" cx="80" cy="80" r={radius} />
         <circle
           className="timer-progress"
           cx="80"
@@ -60,8 +55,14 @@ const Timer = ({ duration = 60, onExit }) => {
           strokeDasharray={circumference}
           strokeDashoffset={circumference - progress}
         />
-        <text x="50%" y="50%" textAnchor="middle" dy=".3em" className="timer-text">
-          {timeLeft}s
+        <text
+          x="50%"
+          y="50%"
+          textAnchor="middle"
+          dy=".3em"
+          className="timer-text"
+        >
+          {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}
         </text>
       </svg>
 
@@ -74,7 +75,7 @@ const Timer = ({ duration = 60, onExit }) => {
           <button onClick={handleStart}>Resume</button>
         )}
         {isFinished && <span className="done-text">Time's up!</span>}
-        <button onClick={handleExit}>Exit</button>
+        <button onClick={handleExit}>Reset</button>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../Buttons/Buttons";
 import "./EmotionCard.css";
 
-const EmotionCard = ({ title, color, description, icon }) => {
+const EmotionCard = ({ title, color, description, icon, onChoose }) => {
   console.log("EmotionCard color:", color);
   return (
     <div className="emotion-card" style={{ borderColor: color }}>
@@ -23,12 +23,8 @@ const EmotionCard = ({ title, color, description, icon }) => {
 
         <div className="button-group">
           <Button
-            text="View details"
-            onClick={() => alert(`Details of ${title}`)}
-          />
-          <Button
             text="Choose emotion"
-            onClick={() => alert(`You chose ${title}`)}
+            onClick={onChoose} // Llama a la función pasada como prop
           />
         </div>
       </div>
