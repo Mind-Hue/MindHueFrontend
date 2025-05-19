@@ -5,10 +5,13 @@ import Footer from "../../components/Footer/Footer";
 import ExerciseData from "../../components/ExerciseData/ExerciseData";
 import "./Exercises.css";
 import Timer from "../../components/Timer/Timer";
+import EmotionalRegistry from "../../components/EmotionalRegistry/EmotionalRegistry";  
 
 function Exercises() {
-  const [exercises, setExercises, emotions, setEmotions] = useState([]);
+  const [exercises, setExercises] = useState([]);
   const [emotionType, setEmotionType] = useState([]);
+  const [showPopup, setShowPopup] = useState(false); // Estado para controlar el popup
+  const [selectedExercise, setSelectedExercise] = useState(null); // Estado para el ejercicio seleccionado
   const [searchParams] = useSearchParams();
   const emotionTypeId = searchParams.get("emotionTypeId"); // Obtén emotionTypeId desde los parámetros de búsqueda
 
@@ -32,8 +35,9 @@ function Exercises() {
       .then((data) => {
         console.log("Fetched exercises:", data);
         setExercises(data);
-      })
+              })
       .catch((error) => console.error("Error fetching exercises:", error));
+
 
     fetch(`http://localhost:8080/api/v1/emotion-types/${emotionTypeId}`)
       .then((response) => {
@@ -49,9 +53,25 @@ function Exercises() {
       });
   }, [emotionTypeId]);
 
+
+  const handleChooseExercise = (exercise) => {
+    console.log("Exercise selected:", exercise);
+    setSelectedExercise(exercise);
+    setShowPopup(true);
+  };
+  console.log("Show popup:", showPopup);
+
+  const closePopup = () => {
+    setShowPopup(false); // Oculta el popup
+    setSelectedExercise(null); // Limpia el ejercicio seleccionado
+  };
+
+
+
   return (
     <div>
       <Header />
+      <div>Show popup: {showPopup}</div>
       <div className="exercises-data">
         {exercises.length > 0 ? (
           exercises.map((exercise) => (
@@ -63,6 +83,7 @@ function Exercises() {
               estimatedTime={exercise.estimatedTime}
               instructions={exercise.instructions}
               color={emotionType.body.colorHex} // Pasa el color dinámico o un color predeterminado
+              onChoose={() => handleChooseExercise(exercise)} // Maneja el botón "Choose Exercise"
             />
           ))
         ) : (
@@ -70,6 +91,23 @@ function Exercises() {
         )}
         <Timer />
       </div>
+
+      {/* Popup */}
+      {(showPopup && (
+  <div className="popup-overlay">
+    <div className="popup-content">
+      <button className="close-button" onClick={closePopup}>
+        &times;
+      </button>
+      <EmotionalRegistry 
+        exercise={selectedExercise}
+        emotionTypeId={emotionType}
+        onClose={closePopup}
+      />
+    </div>
+  </div>
+))}
+
       <Footer />
     </div>
   );

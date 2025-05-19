@@ -1,77 +1,75 @@
-import React, { useState } from 'react';
-import './EmotionalRegistry.css';
-// import Button from "../Buttons/Buttons";
+import React, { useState } from "react";
+import "./EmotionalRegistry.css";
 
-const EmotionalRegistry = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    date: '',
-    emotion: '',
-    exerciseName: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+const EmotionalRegistry = ({ exercise, emotionType, onClose }) => {
+  const [userName, setUserName] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+
+    const payload = {
+      emotionTypeId: emotionType.id,
+      exerciseId: exercise.id,
+      userName,
+      createdAt,
+    };
+
+    console.log("Submitting payload:", payload);
+
+    fetch("http://localhost:8080/api/v1/emotion-logs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to submit emotion log");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Emotion log submitted:", data);
+        onClose(); // Cierra el popup después de enviar los datos
+      })
+      .catch((error) => console.error("Error submitting emotion log:", error));
   };
+
+  console.log("Emotion Type:", emotionType);
 
   return (
     <div className="emotional-registry">
+      <h2>Emotional Registry</h2>
+      <p className="subtitle">
+        Log your emotions for the exercise: <strong>{exercise?.name}</strong>
+      </p>
+
       <form onSubmit={handleSubmit}>
-        <h2>Registro emocional</h2>
-        <p className="subtitle">FuncionamientoFuncionamientoFuncionamiento.</p>
-        
         <div className="form-group">
-          <label>Username</label>
+          <label htmlFor="userName">User Name</label>
           <input
             type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
+            id="userName"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            placeholder="Enter your name"
+            required
           />
         </div>
-
         <div className="form-group">
-          <label>Date</label>
+          <label htmlFor="createdAt">Date</label>
           <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
+            type="datetime-local"
+            id="createdAt"
+            value={createdAt}
+            onChange={(e) => setCreatedAt(e.target.value)}
+            required
           />
         </div>
-
-        <div className="form-group">
-          <label>Emotion</label>
-          <input
-            type="text"
-            name="emotion"
-            value={formData.emotion}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Name exercise choosed</label>
-          <input
-            type="text"
-            name="exerciseName"
-            value={formData.exerciseName}
-            onChange={handleChange}
-          />
-        </div>
-
         <button type="submit" className="submit-btn">
-          Empezar
+          Submit
         </button>
       </form>
     </div>
