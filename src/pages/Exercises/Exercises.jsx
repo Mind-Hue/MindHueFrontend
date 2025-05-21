@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import Sections from "../../components/sections/sections";
 import Footer from "../../components/Footer/Footer";
 import ExerciseData from "../../components/ExerciseData/ExerciseData";
 import "./Exercises.css";
-import Timer from "../../components/Timer/Timer";
+// import Timer from "../../components/Timer/Timer";
 import EmotionalRegistry from "../../components/EmotionalRegistry/EmotionalRegistry";
 
 function Exercises() {
@@ -57,7 +58,6 @@ function Exercises() {
     setSelectedExercise(exercise);
     setShowPopup(true);
   };
-  console.log("Show popup:", showPopup);
 
   const closePopup = () => {
     setShowPopup(false); // Oculta el popup
@@ -65,9 +65,14 @@ function Exercises() {
   };
 
   return (
-    <div>
+    <>
       <Header />
-      <div>Show popup: {showPopup}</div>
+      <Sections
+        title="< Reflections"
+        backgroundColor="#1AA179"
+        className="section-reflections"
+      ></Sections>
+
       <div className="exercises-data">
         {exercises.length > 0 ? (
           exercises.map((exercise) => (
@@ -85,7 +90,7 @@ function Exercises() {
         ) : (
           <p>Loading exercises...</p>
         )}
-        <Timer />
+        {/* <Timer /> */}
       </div>
 
       {/* Popup */}
@@ -106,7 +111,7 @@ function Exercises() {
       )}
 
       <Footer />
-    </div>
+    </>
   );
 }
 

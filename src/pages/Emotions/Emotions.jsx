@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import Sections from "../../components/sections/sections";
 import Footer from "../../components/Footer/Footer";
 import EmotionCard from "../../components/EmotionCard/EmotionCard";
 import joyIcon from "../../assets/emotionsIcons/joy_icon.png";
@@ -45,6 +46,11 @@ const EmotionsPage = () => {
   return (
     <div>
       <Header />
+      <Sections
+        title="< Emotions"
+        backgroundColor="#0A58CA"
+        className="section-reflections"
+      ></Sections>
 
       <main className="emotions-container">
         <h1>Emotions</h1>
@@ -52,14 +58,14 @@ const EmotionsPage = () => {
 
         <div className="emotions-list">
           {emotions.map((emotion) => (
-           <EmotionCard
-           key={emotion.id}
-           title={emotion.name}
-           color={emotion.colorHex}
-           description={`This is the ${emotion.name} emotion.`}
-           icon={iconMap[emotion.name]} // Asigna el ícono basado en el nombre
-           onChoose={() => handleChooseEmotion(emotion.id)} // Pasa la función para manejar el botón
-         />
+            <EmotionCard
+              key={emotion.id}
+              title={emotion.name}
+              color={emotion.colorHex}
+              description={`This is the ${emotion.name} emotion.`}
+              icon={iconMap[emotion.name]} // Asigna el ícono basado en el nombre
+              onChoose={() => handleChooseEmotion(emotion.id)} // Pasa la función para manejar el botón
+            />
           ))}
         </div>
       </main>
