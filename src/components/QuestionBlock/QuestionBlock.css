@@ -1,0 +1,40 @@
+.question-box {
+  background-color: #2f2201;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.question-field {
+  margin-bottom: 15px;
+}
+
+.question-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.question-field input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+}
+
+.question-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.question-buttons button {
+  background-color: #fcecb5;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
