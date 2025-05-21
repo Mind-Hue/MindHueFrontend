@@ -1,24 +1,22 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./EmotionalRegistry.css";
 
 const EmotionalRegistry = ({ exercise, emotionType, onClose }) => {
   const [userName, setUserName] = useState("");
   const [createdAt, setCreatedAt] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Construir el payload para enviar al backend
     const payload = {
-      emotionTypeId: emotionType.id, // ID del tipo de emoción
-      exerciseId: exercise.id, // ID del ejercicio
-      userName, // Nombre del usuario
-      createdAt, // Fecha y hora seleccionada
+      emotionTypeId: emotionType.id,
+      exerciseId: exercise.id,
+      userName,
+      createdAt,
     };
 
-    console.log("Submitting payload:", payload);
-
-    // Enviar los datos al backend mediante un POST
     fetch("http://localhost:8080/api/v1/emotion-logs", {
       method: "POST",
       headers: {
@@ -33,13 +31,12 @@ const EmotionalRegistry = ({ exercise, emotionType, onClose }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Emotion log submitted:", data);
-        alert("Emotion log successfully submitted!"); // Notificación de éxito
-        onClose(); // Cierra el popup después de enviar los datos
+        // Redirige a /reflections después de guardar
+        navigate("/reflections?timer=1");
       })
       .catch((error) => {
         console.error("Error submitting emotion log:", error);
-        alert("Failed to submit emotion log. Please try again."); // Notificación de error
+        alert("Failed to submit emotion log. Please try again.");
       });
   };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Timer.css";
 
-const Timer = ({ duration = 60 * 15, onExit }) => {
+const Timer = ({ duration = 60 * 15, onExit, onFinish }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
   const [isRunning, setIsRunning] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
@@ -43,6 +43,12 @@ const Timer = ({ duration = 60 * 15, onExit }) => {
     if (onExit) onExit();
   };
 
+  const handleFinish = () => {
+    setIsRunning(false);
+    setIsFinished(true);
+    if (onFinish) onFinish();
+  };
+
   return (
     <div className="timer-container">
       <svg width="160" height="160">
@@ -76,6 +82,8 @@ const Timer = ({ duration = 60 * 15, onExit }) => {
         )}
         {isFinished && <span className="done-text">Time's up!</span>}
         <button onClick={handleExit}>Reset</button>
+        {/* Botón Finish */}
+        <button onClick={handleFinish}>Finish</button>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@
   align-items: center;
   gap: 20px;
   font-family: sans-serif;
+  height: 50vh;
 }
 
 .timer-bg {
