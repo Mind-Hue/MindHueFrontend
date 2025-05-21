@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Sections from "../../components/sections/sections";
@@ -9,10 +9,12 @@ import Timer from "../../components/Timer/Timer";
 
 function Reflections() {
   const [questions, setQuestions] = useState([]);
-  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const showTimer = searchParams.get("timer") === "1";
+  const introRef = useRef(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/v1/reflections")
+    fetch("http://localhost:8080/api/v1/questions")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch questions");
@@ -20,14 +22,16 @@ function Reflections() {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched questions:", data);
         setQuestions(data);
       })
       .catch((error) => console.error("Error fetching questions:", error));
   }, []);
 
-  const handleChooseQuestion = (questionId) => {
-    navigate(`/reflections?questionId=${questionId}`);
+  // Función para hacer scroll a la intro
+  const scrollToIntro = () => {
+    if (introRef.current) {
+      introRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -37,11 +41,10 @@ function Reflections() {
         title="< Reflections"
         backgroundColor="#FFC107"
         className="section-reflections"
-      ></Sections>
-      <Timer />
-      <QuestionBlock questions={questions} onChoose={handleChooseQuestion} />
+      />
+      {showTimer && <Timer onFinish={scrollToIntro} />}
       <main className="main-container">
-        <div className="text-intro">
+        <div className="text-intro" ref={introRef}>
           <h2>¿Por qué registrar emociones?</h2>
           <p>
             Registrar tus emociones te ayuda a entender mejor cómo reaccionas
@@ -50,6 +53,7 @@ function Reflections() {
           </p>
         </div>
       </main>
+      <QuestionBlock questions={questions} />
       <Footer />
     </>
   );
