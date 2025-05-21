@@ -12,6 +12,7 @@
 .profile-name {
   font-family: "Georgia", serif;
   margin: 10px 0;
+  color: #1c1c2e;
 }
 
 .bar-chart {
@@ -37,22 +38,19 @@
 }
 
 .bar-0 {
-  background-color: #4fc3f7;
+  background-color: #ffc107;
 }
 .bar-1 {
-  background-color: #ff8a65;
+  background-color: #0a58ca;
 }
 .bar-2 {
-  background-color: #9575cd;
+  background-color: #dc3545;
 }
 .bar-3 {
-  background-color: #ef5350;
+  background-color: #1aa179;
 }
 .bar-4 {
-  background-color: #81c784;
-}
-.bar-5 {
-  background-color: #ffeb3b;
+  background-color: #0aa2c0;
 }
 
 .emotion-list {

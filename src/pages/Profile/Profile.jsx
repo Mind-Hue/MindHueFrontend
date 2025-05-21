@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Sections from "../../components/sections/sections";
@@ -5,19 +6,17 @@ import EmotionLogCard from "../../components/EmotionLogCard/EmotionLogCard";
 import profileImg from "../../assets/images/Profile.svg";
 import "./Profile.css";
 
-
 const ProfilePage = () => {
+  const userName = localStorage.getItem("userName") || "Name user";
   const emotions = ["Joy", "Sadness", "Anger", "Fear", "Calm"];
-  const logs = [
-    {
-      userName: "Name user",
-      createdAt: "2025-05-21",
-      exercise: "Mindfulness",
-      question: "¿Cómo te sientes hoy?",
-      answer: "Me siento más tranquilo después del ejercicio.",
-    },
-    // puedes agregar más
-  ];
+  const [logs, setLogs] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/v1/emotion-logs")
+      .then((res) => res.json())
+      .then((data) => setLogs(data))
+      .catch((err) => console.error("Error fetching logs:", err));
+  }, []);
 
   return (
     <>
@@ -26,11 +25,11 @@ const ProfilePage = () => {
 
       <div className="profile-container">
         <img src={profileImg} alt="Profile" className="profile-img" />
-        <h2 className="profile-name">Name user</h2>
+        <h2 className="profile-name">{userName}</h2>
 
         <div className="bar-chart">
           <h3>Registro reflexión</h3>
-          {["Sport", "Work", "Friends", "Movie", "Travel", "Food"].map(
+          {["Joy", "Sadness", "Anger", "Fear", "Calm"].map(
             (label, i) => (
               <div key={i} className="bar-item">
                 <span>{label}</span>

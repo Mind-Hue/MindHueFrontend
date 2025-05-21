@@ -1,30 +1,32 @@
-// src/components/EmotionLogCard.jsx
-import React from "react";
 import "./EmotionLogCard.css";
 
 const EmotionLogCard = ({
+  emotionTypeId,
   userName,
   createdAt,
-  exercise,
-  question,
-  answer,
+  exerciseId,
+  questionId,
+  answerId,
 }) => {
   return (
     <div className="emotion-log-card">
       <p>
-        <strong>Usuario:</strong> {userName}
+        <strong>Emotion:</strong> {emotionTypeId}
       </p>
       <p>
-        <strong>Fecha:</strong> {createdAt}
+        <strong>User name:</strong> {userName}
       </p>
       <p>
-        <strong>Ejercicio:</strong> {exercise}
+        <strong>Date:</strong> {createdAt}
       </p>
       <p>
-        <strong>Pregunta:</strong> {question}
+        <strong>Exercise:</strong> {exerciseId}
       </p>
       <p>
-        <strong>Respuesta:</strong> {answer}
+        <strong>Questions:</strong> {questionId}
+      </p>
+      <p>
+        <strong>Your Answers:</strong> {answerId}
       </p>
       <div className="card-buttons">
         <button>Ver detalles</button>
