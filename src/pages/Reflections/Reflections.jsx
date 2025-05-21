@@ -60,6 +60,4 @@ function Reflections() {
   );
 }
 
-export default Reflections;console.log("Questions fetched:", data);
-console.error("Error fetching questions:", error);
-console.log("Scrolling to intro");
+export default Reflections;
