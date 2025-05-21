@@ -1,7 +1,7 @@
 import React from "react";
-import Logo from "../../assets/whitelogo.png";
+import Logo from "../../assets/images/WhiteLogo.png"; // Asegúrate de que la ruta sea correcta
 // import GroupEmotion from "../../assets/IconsEmotionsFooter.png";
-import GroupEmotion from "../../assets/test2.svg";
+import GroupEmotion from "../../assets/images/EmotionsFooter.png";
 import "./Footer.css";
 
 export default function Footer() {

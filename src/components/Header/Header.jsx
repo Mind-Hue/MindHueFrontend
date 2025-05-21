@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css"; 
-import Logo from "../../assets/whitelogo.png";
+import Logo from "../../assets/images/WhiteLogo.png"; // Asegúrate de que la ruta sea correcta
 
 export default function Header() {
   return (

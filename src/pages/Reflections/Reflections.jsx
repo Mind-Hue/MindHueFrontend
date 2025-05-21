@@ -6,6 +6,7 @@ import Sections from "../../components/sections/sections";
 import "./Reflections.css";
 import QuestionBlock from "../../components/QuestionBlock/QuestionBlock";
 import Timer from "../../components/Timer/Timer";
+import Buttons from "../../components/Buttons/Buttons";
 
 function Reflections() {
   const [questions, setQuestions] = useState([]);
