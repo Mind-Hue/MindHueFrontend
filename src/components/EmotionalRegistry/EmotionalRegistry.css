@@ -1,0 +1,84 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.emotional-registry {
+  width: 85%;
+  margin: -4px;
+  padding: 20px;
+  background-color: #332701;
+  border: 3px solid #fd7e14;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.emotional-registry h2 {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 0 0 4px 0;
+  text-align: left;
+}
+
+.emotional-registry .subtitle {
+  color: #ffffff;
+  font-size: 11px;
+  margin-bottom: 16px;
+  text-align: left;
+  opacity: 0.8;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 40px; /* Increased for better touch targets */
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #d9d9d9;
+  font-size: 16px; /* Increased for better readability on mobile */
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 44px; /* Increased for better touch target */
+  padding: 10px;
+  background-color: #ffe4b5;
+  border: none;
+  border-radius: 10px;
+  color: #2e2600;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #fd7e14;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+  padding: 8px;
+}

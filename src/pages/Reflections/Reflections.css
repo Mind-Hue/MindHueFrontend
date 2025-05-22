@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background-color: #f2f0f0;
+}
+.section-reflections {
+  padding: 40px;
+}
+
+.main-container {
+  color: black;
+}
+
+.text-intro {
+  background-color: #fff3c4;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  height: 20vh;
+  margin: 30px 30 px 0 30px;
+}
+
+.text-intro h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: black;
+}
+
+.text-intro p {
+  font-size: 14px;
+  color: #444;
+}
+

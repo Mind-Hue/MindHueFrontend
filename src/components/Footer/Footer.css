@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  /* HACK: because the logo has a right padding in the image file */
+  /* padding-right: 0; */
+  background-color: black;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  .logo {
+    height: 60px;
+    margin-right: auto;
+  }
+
+  .icon {
+    position: absolute;
+    right: -25px;
+    bottom: -20px;
+  }
+}

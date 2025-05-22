@@ -1,0 +1,13 @@
+.section-container {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.section-container h3 {
+  font-size: 18px;
+  font-family: "Georgia", serif;
+  color: #ffffff;
+
+  margin: 0;
+}

@@ -1,0 +1,11 @@
+.emotions-container {
+  padding: 20px;
+}
+
+.emotions-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 20px;
+}
