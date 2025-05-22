@@ -3,18 +3,18 @@ import axios from "axios";
 export class EmotionTypeService {
   baseUrl = "http://localhost:8080/api/v1/emotion-types";
 
-  // Obtener opciones de solicitud (sin token, usando localStorage si es necesario)
+  
   getRequestOptions() {
-    const user = JSON.parse(localStorage.getItem("user")); // Obtener usuario desde localStorage
+    const user = JSON.parse(localStorage.getItem("user")); 
     return {
       headers: {
         "Content-Type": "application/json",
-        ...(user && user.id ? { "X-User-ID": user.id } : {}), // Agregar encabezado opcional con el ID del usuario
+        ...(user && user.id ? { "X-User-ID": user.id } : {}), 
       },
     };
   }
 
-  // Obtener todos los EmotionTypes
+  
   getAllEmotionTypes() {
     console.log("Fetching all EmotionTypes...");
     return axios
@@ -26,7 +26,7 @@ export class EmotionTypeService {
       });
   }
 
-  // Obtener un EmotionType por ID
+  
   getEmotionTypeById(id) {
     const url = `${this.baseUrl}/${id}`;
     return axios
@@ -38,7 +38,7 @@ export class EmotionTypeService {
       });
   }
 
-  // Crear un nuevo EmotionType
+ 
   createEmotionType(emotionType) {
     return axios
       .post(this.baseUrl, emotionType, this.getRequestOptions())
@@ -49,7 +49,7 @@ export class EmotionTypeService {
       });
   }
 
-  // Actualizar un EmotionType
+
   updateEmotionType(id, updatedEmotionType) {
     const url = `${this.baseUrl}/${id}`;
     return axios
@@ -61,7 +61,7 @@ export class EmotionTypeService {
       });
   }
 
-  // Eliminar un EmotionType
+ 
   deleteEmotionType(id) {
     const url = `${this.baseUrl}/${id}`;
     return axios

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
-import Logo from "../../assets/images/WhiteLogo.png"; // Asegúrate de que la ruta sea correcta
+import Logo from "../../assets/images/WhiteLogo.png";
 
 export default function Header() {
   return (

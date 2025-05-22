@@ -5,16 +5,16 @@ import Sections from "../../components/sections/sections";
 import Footer from "../../components/Footer/Footer";
 import ExerciseData from "../../components/ExerciseData/ExerciseData";
 import "./Exercises.css";
-// import Timer from "../../components/Timer/Timer";
+
 import EmotionalRegistry from "../../components/EmotionalRegistry/EmotionalRegistry";
 
 function Exercises() {
   const [exercises, setExercises] = useState([]);
   const [emotionType, setEmotionType] = useState([]);
-  const [showPopup, setShowPopup] = useState(false); // Estado para controlar el popup
-  const [selectedExercise, setSelectedExercise] = useState(null); // Estado para el ejercicio seleccionado
+  const [showPopup, setShowPopup] = useState(false); 
+  const [selectedExercise, setSelectedExercise] = useState(null); 
   const [searchParams] = useSearchParams();
-  const emotionTypeId = searchParams.get("emotionTypeId"); // Obtén emotionTypeId desde los parámetros de búsqueda
+  const emotionTypeId = searchParams.get("emotionTypeId"); 
 
   useEffect(() => {
     if (!emotionTypeId || isNaN(emotionTypeId)) {
@@ -49,7 +49,7 @@ function Exercises() {
       })
       .then((data) => {
         console.log("Fetched emotion type:", data);
-        setEmotionType(data); // Guarda el emotionType en el estado
+        setEmotionType(data); 
       });
   }, [emotionTypeId]);
 
@@ -60,8 +60,8 @@ function Exercises() {
   };
 
   const closePopup = () => {
-    setShowPopup(false); // Oculta el popup
-    setSelectedExercise(null); // Limpia el ejercicio seleccionado
+    setShowPopup(false); 
+    setSelectedExercise(null); 
   };
 
   return (
@@ -83,14 +83,14 @@ function Exercises() {
               materials={exercise.materials}
               estimatedTime={exercise.estimatedTime}
               instructions={exercise.instructions}
-              color={emotionType.body.colorHex} // Pasa el color dinámico o un color predeterminado
-              onChoose={() => handleChooseExercise(exercise)} // Maneja el botón "Choose Exercise"
+              color={emotionType.body.colorHex} 
+              onChoose={() => handleChooseExercise(exercise)} 
             />
           ))
         ) : (
           <p>Loading exercises...</p>
         )}
-        {/* <Timer /> */}
+        
       </div>
 
       {/* Popup */}
@@ -103,7 +103,7 @@ function Exercises() {
             <EmotionalRegistry
               exercise={selectedExercise}
               emotionType={emotionType}
-              // emotionType={emotionType} // Pasa el objeto completo emotionType
+            
               onClose={closePopup}
             />
           </div>

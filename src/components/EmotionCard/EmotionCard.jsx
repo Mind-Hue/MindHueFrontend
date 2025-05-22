@@ -22,7 +22,7 @@ const EmotionCard = ({ title, color, description, icon, onChoose }) => {
         <div className="button-group">
           <Button
             text="Choose emotion"
-            onClick={onChoose} // Llama a la función pasada como prop
+            onClick={onChoose} 
           />
         </div>
       </div>

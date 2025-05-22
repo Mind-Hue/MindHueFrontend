@@ -9,16 +9,16 @@ const ExerciseData = ({
   estimatedTime,
   instructions,
   color,
-  onChoose, // Recibe la función onChoose como prop
+  onChoose, 
 }) => {
-  // Mapa de imágenes predeterminadas según el título del ejercicio
+ 
   const imageMap = {
     "Yoga Stretch": "https://example.com/yoga-stretch.jpg",
     "Meditation": "https://example.com/meditation.jpg",
     "Breathing Exercise": "https://example.com/breathing-exercise.jpg",
   };
 
-  // Asignar una imagen según el título o usar una imagen predeterminada
+ 
   const image = imageMap[title] || "https://example.com/default-exercise.jpg";
 
   return (
@@ -49,7 +49,7 @@ const ExerciseData = ({
         <Button
           text="Choose exercise"
           className="choose-button"
-          onClick={onChoose} // Llama a la función onChoose pasada como prop
+          onClick={onChoose} 
         />
       </div>
     </div>

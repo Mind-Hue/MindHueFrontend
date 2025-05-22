@@ -37,7 +37,7 @@ const EmotionsPage = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched emotions:", data); // Verifica los datos aquí
+        console.log("Fetched emotions:", data); 
         setEmotions(data);
       })
       .catch((error) => console.error("Error fetching emotions:", error));
@@ -63,8 +63,8 @@ const EmotionsPage = () => {
               title={emotion.name}
               color={emotion.colorHex}
               description={`This is the ${emotion.name} emotion.`}
-              icon={iconMap[emotion.name]} // Asigna el ícono basado en el nombre
-              onChoose={() => handleChooseEmotion(emotion.id)} // Pasa la función para manejar el botón
+              icon={iconMap[emotion.name]} 
+              onChoose={() => handleChooseEmotion(emotion.id)} 
             />
           ))}
         </div>
